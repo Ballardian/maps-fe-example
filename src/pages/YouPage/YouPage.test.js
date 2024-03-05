@@ -38,7 +38,7 @@ const navigateToLogin = jest
   .mockResolvedValue({});
 
 // Fields
-describe.skip("YouPage renders correctly", () => {
+describe("YouPage renders correctly", () => {
   it("should render headings correctly", async () => {
     render(<YouPage />);
     await waitFor(() => {
@@ -124,7 +124,7 @@ describe.skip("YouPage renders correctly", () => {
 
 // Buttons
 describe("YouPage interactions work correctly", () => {
-  describe.skip("user can update their location", () => {
+  describe("user can update their location", () => {
     it("should open dropdown containing all countries when user clicks country location field", async () => {
       render(<YouPage />);
       await waitFor(() => {
@@ -167,26 +167,8 @@ describe("YouPage interactions work correctly", () => {
         ).toBeInTheDocument();
       });
     });
-    // it("user can click on city location input and it will open dropdown containing all relevant cities", async () => {
-    //   render(<YouPage />);
-    //   await waitFor(() => {
-    //     const selectCityField = screen.getByTestId(dataTestIds.userCity);
-    //     expect(selectCityField).toBeInTheDocument();
-    //   });
-    //   const location_city_input = screen.getByTestId(
-    //     dataTestIds.userCity
-    //   ).firstElementChild;
-    //   fireEvent.mouseDown(location_city_input);
-    //   for (let i = 0; i < mockGetCitiesForCountry1Response.length; i++) {
-    //     expect(
-    //       screen.getByTestId(
-    //         `${dataTestIds.option}-city${mockGetCitiesForCountry1Response[i].id}`
-    //       )
-    //     ).toBeInTheDocument();
-    //   }
-    // });
   });
-  describe.skip("user can switch between qr clode and link", () => {
+  describe("user can switch between qr clode and link", () => {
     it("should switch between sharing via QR code or via link when toggle is clicked", async () => {
       render(<YouPage />);
       await waitFor(() => {
@@ -234,7 +216,6 @@ describe("YouPage interactions work correctly", () => {
         expect(onFinishSpy).toHaveBeenCalled();
       });
     });
-    // TODO write tests for errors maybe?
   });
   describe("user can logout", () => {
     it("should fire navigateToLogin util when logout button is clicked", async () => {

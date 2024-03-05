@@ -1,6 +1,5 @@
 import * as Sentry from "@sentry/browser";
-// TODO george fix in tests
-// import mixpanel from "mixpanel-browser";
+import mixpanel from "mixpanel-browser";
 import { message } from "antd";
 
 import userApi from "../../../services/userApi";
@@ -21,7 +20,6 @@ const fetchUser = async (setUser, setIsLoading) => {
   }
 };
 
-// TODO george change to fetchCountries to match RegisterPage
 const fetchCountries = async (setCountries, setIsLoading) => {
   try {
     const response = await locationsApi.fetchCountries();
@@ -138,10 +136,10 @@ const onFinish = async (
         setUsersForRecommendations
       );
     }
-    // mixpanel.track("You - update destination", {
-    //   country: country,
-    //   city: city,
-    // });
+    mixpanel.track("You - update destination", {
+      country: country,
+      city: city,
+    });
 
     setIsLoading(false);
   } catch (error) {
@@ -152,7 +150,7 @@ const onFinish = async (
 };
 
 const navigateToLogin = (navigate) => {
-  // mixpanel.track("You - clicked log out");
+  mixpanel.track("You - clicked log out");
   navigate(routes.login);
 };
 

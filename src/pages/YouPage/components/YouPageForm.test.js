@@ -109,8 +109,10 @@ describe("YouPageForm renders correctly initially", () => {
       expect(cityField).toBeInTheDocument();
     });
   });
-  // TODO george move to new test case
-  it("fires onFinish function when Update button is clicked", async () => {
+});
+
+describe("YouPageForm interactions work correctly", () => {
+  it("fires onFinish prop when Update button is clicked", async () => {
     const onFinish = jest.fn();
     render(
       <YouPageForm
@@ -128,6 +130,26 @@ describe("YouPageForm renders correctly initially", () => {
     fireEvent.submit(updateButton);
     await waitFor(() => {
       expect(onFinish).toHaveBeenCalled();
+    });
+  });
+  it("fires navigateToLogin prop when Log Out button is clicked", async () => {
+    const navigateToLogin = jest.fn();
+    render(
+      <YouPageForm
+        isLoading={false}
+        user={mockGetUserReponse}
+        countries={mockGetCountriesReponse}
+        cities={mockGetCitiesForCountry1Response}
+        navigateToLogin={navigateToLogin}
+      />
+    );
+    await waitFor(() => {
+      expect(screen.getByTestId(dataTestIds.logOutBtn)).toBeInTheDocument();
+    });
+    const logOutButton = screen.getByTestId(dataTestIds.logOutBtn);
+    fireEvent.click(logOutButton);
+    await waitFor(() => {
+      expect(navigateToLogin).toHaveBeenCalled();
     });
   });
 });

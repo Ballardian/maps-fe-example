@@ -176,7 +176,6 @@ const YouPageForm = ({
             </Form.Item>
           </Card>
         </Row>
-        {/* TODO george uncomment and test */}
         {user?.destinations[0]?.id && (
           <Row style={{ margin: 24 }}>
             <Card

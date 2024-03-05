@@ -15,9 +15,6 @@ import {
 } from "../../../services/mockApiResponses";
 
 // SPY ON / MOCK FUNCTIONS
-// const updateDestinationSpy = jest
-//   .spyOn(utils, "updateDestination")
-//   .mockResolvedValue({});
 // 3rd party
 jest.spyOn(router, "useNavigate").mockImplementation(() => navigate);
 const navigate = jest.fn();
@@ -63,7 +60,7 @@ const initialValues = {
   city: mockGetCitiesForCountry1Response[0].id,
 };
 
-describe.skip("YouPageUtils works as expected", () => {
+describe("YouPageUtils works as expected", () => {
   describe("fetchUser", () => {
     it("should fetch user", async () => {
       const setUser = jest.fn();
@@ -155,14 +152,13 @@ describe.skip("YouPageUtils works as expected", () => {
         setAreRecommendedUsersFriends,
         setUsersForRecommendations
       );
-      //   TODO george fix this to just expect updateDestination()
-      // expect(updateDestinationSpy).toHaveBeenCalled();
+      expect(updateDestinationSpy).toHaveBeenCalled();
       expect(addDestinationSpy).toHaveBeenCalled();
       expect(updateCurrentDestinationSpy).toHaveBeenCalled();
       expect(fetchUsersForRecommendationsSpy).toHaveBeenCalled();
     });
   });
-  describe.skip("updateDestination", () => {
+  describe("updateDestination", () => {
     it("should update destination", async () => {
       const country = mockGetCountriesReponse[1].id;
       const userCountry = mockGetUserReponse.destinations[0].country.id;

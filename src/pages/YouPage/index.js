@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-// TODO george test manually
 import { useNavigate } from "react-router";
-// TODO george fix in tests
-// import mixpanel from "mixpanel-browser";
+import mixpanel from "mixpanel-browser";
 
 import YouPageForm from "./components/YouPageForm";
 import utils from "./utils/YouPageUtils";
@@ -34,7 +32,7 @@ const YouPage = () => {
     useState(false);
 
   useEffect(() => {
-    // mixpanel.track("You - page view");
+    mixpanel.track("You - page view");
     // TODO george add info to redux upon sign in / initial load
     utils.fetchUser(setUser, setIsLoading).then((user) => {
       utils.fetchCountries(setCountries, setIsLoading);
